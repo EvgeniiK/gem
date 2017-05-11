@@ -5,7 +5,7 @@ module SolidusKlarnaGem
 
       @@payments ||= []
 
-      def config(url, should_redirect=nil, &block)
+      def register_path(url,  should_redirect=nil, &block)
         @@payments << PaymentSystemRedirect.new(url, should_redirect, &block)
       end
 
