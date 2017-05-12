@@ -5,13 +5,13 @@ module SolidusKlarnaGem
 
       @@payments ||= []
 
-      def register_path(url,  should_redirect=nil, &block)
+      def register_path(url, should_redirect=nil, &block)
         @@payments << PaymentSystemRedirect.new(url, should_redirect, &block)
       end
 
       def path(order)
-        @@payments.each do |psr|
-          url = psr.url(order)
+        @@payments.each do |payment|
+          url = payment.url(order)
           return url if url
         end
       end
